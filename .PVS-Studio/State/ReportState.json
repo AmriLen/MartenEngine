@@ -1,0 +1,13 @@
+{
+  "json": [
+    {
+      "code": "",
+      "currLine": "",
+      "falseAlarm": false,
+      "level": 0,
+      "message": "No compiler invocations were detected.",
+      "nextLine": "",
+      "positions": []
+    }
+  ]
+}
