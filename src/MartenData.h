@@ -1,14 +1,7 @@
-#ifndef MARTENDATA_H
-#define MARTENDATA_H
+#pragma once
 
-#include <string>
-
-namespace MartenData {
-    const std::string NAME = "Marten Engine";
-    const std::string VERSION_PREFIX = "IN-DEV";
-    const std::string VERSION = "0.0.1";
-    const std::string BUILD_DATE = "2025-11-03";
-    const std::string AUTHOR = "AICHUVAKOV AMIR";
-}
-
-#endif // MARTENDATA_H
+#define ME_NAME "Marten Engine"
+#define ME_VERSION_PREFIX "IN-DEV"
+#define ME_VERSION "0.0.2"
+#define ME_BUILD_DATE "2025-11-05"
+#define ME_AUTHOR "AYCHUVAKOV AMIR"

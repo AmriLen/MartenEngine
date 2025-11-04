@@ -1,69 +1,38 @@
-#include "MartenUtils/MartenLogger.h"
+#include "MartenCore/Application.hpp"
 #include "MartenData.h"
 #include <iostream>
-#include <fstream>
-#include <glad/glad.h>
-#include <GLFW/glfw3.h>
+#include <string>
+
+class MyApp : public MartenEngine::Application {
+    virtual void on_update() override {
+        // Application update logic here
+    }
+    int frameCount = 0;
+};
 
 int main() {
-    std::cout << "Hello, " << MartenData::NAME << "!\n" << std::endl;
-    std::cout << "Version: " << MartenData::VERSION_PREFIX << ": " << MartenData::VERSION << std::endl;
-    std::cout << "Author: " << MartenData::AUTHOR << std::endl;
 
-    std::cout << std::endl;
-    std::cout << "MartenLogger test:" << std::endl;
-    MartenLogger::Initialize();
-    MartenLogger::SECS("This is a successful security message.");
-    MartenLogger::INFO(MartenData::NAME);
-    MartenLogger::WARN("This is a warning message.");
-    MartenLogger::ERR("This is an error message.");
-    MartenLogger::CRIT("This is a critical message.");
-    std::cout << std::endl;
-    std::cout << "LOG:" << std::endl;
+    std::cout << 
+    R"(   __    __   ______   ______  ______  ______   __   __     )" << "\n" <<
+    R"(  /\ "-./  \ /\  __ \ /\  == \/\__  _\/\  ___\ /\ "-.\ \    )" << "\n" <<
+    R"(  \ \ \-./\ \\ \  __ \\ \  __<\/_/\ \/\ \  __\ \ \ \-.  \   )" << "\n" <<
+    R"(   \ \_\ \ \_\\ \_\ \_\\ \_\ \_\ \ \_\ \ \_____\\ \_\\"\_\  )" << "\n" <<
+    R"(    \/_/  \/_/ \/_/\/_/ \/_/ /_/  \/_/  \/_____/ \/_/ \/_/  )" << "\n" <<
+    R"(   ______   __   __   ______   __   __   __   ______        )" << "\n" <<
+    R"(  /\  ___\ /\ "-.\ \ /\  ___\ /\ \ /\ "-.\ \ /\  ___\       )" << "\n" <<
+    R"(  \ \  __\ \ \ \-.  \\ \ \__ \\ \ \\ \ \-.  \\ \  __\       )" << "\n" <<
+    R"(   \ \_____\\ \_\\"\_\\ \_____\\ \_\\ \_\\"\_\\ \_____\     )" << "\n" <<
+    R"(    \/_____/ \/_/ \/_/ \/_____/ \/_/ \/_/ \/_/ \/_____/     )" << "\n" <<
+    std::endl;
 
+    std::cout << "By: " << ME_AUTHOR << std::endl << std::endl;
 
-    if (glfwInit()) {
-        MartenLogger::SECS("GLFW initialized successfully");
-    } else {
-        MartenLogger::CRIT("Failed to initialize GLFW");
-        return -1;
-    }
+    std::cout << "Version: \t" << ME_VERSION_PREFIX << " : " << ME_VERSION << std::endl;
+    std::cout << "Build Date: \t" << ME_BUILD_DATE << std::endl << std::endl;
+    
+    auto myApp = std::make_unique<MyApp>();
+    int returnCode = myApp->start(1280, 720, "Marten Engine");
 
-    glfwWindowHint(GLFW_SAMPLES, 4);
-    glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
-    glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
-    glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
-
-    GLFWwindow* window;
-    window = glfwCreateWindow(1280, 720, "Marten Engine", NULL, NULL);
-    if (window != NULL) {
-        MartenLogger::SECS("GLFW window created successfully");
-    } else {
-        MartenLogger::CRIT("Failed to open GLFW window");
-        return -1;
-    }
-    glfwMakeContextCurrent(window);
-
-    if (gladLoadGLLoader((GLADloadproc)glfwGetProcAddress)) {
-        MartenLogger::SECS("GLAD initialized successfully");
-    } else {
-        MartenLogger::CRIT("Failed to initialize GLAD");
-        return -1;
-    }
-
-    glViewport(0, 0, 800, 600);
-    glfwSetFramebufferSizeCallback(window, [](GLFWwindow* window, int width, int height) {
-        glViewport(0, 0, width, height);
-    });
-
-    while(!glfwWindowShouldClose(window)) {
-        glfwSwapBuffers(window);
-        glfwPollEvents();    
-    }
-
-    glfwTerminate();
-
-    MartenLogger::Shutdown();
-    system("pause");
-    return 0;
+    std::cin.get();
+    return returnCode;
 }

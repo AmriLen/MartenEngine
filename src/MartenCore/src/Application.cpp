@@ -1,6 +1,6 @@
 #include "../Application.hpp"
 #include "../Window.hpp"
-#include "../../MartenUtils/MartenLogger.h"
+#include "../../MartenUtils/MartenLogger.hpp"
 
 #include <iostream>
 

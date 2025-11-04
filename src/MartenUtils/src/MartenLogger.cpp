@@ -1,4 +1,4 @@
-#include "../MartenLogger.h"
+#include "../MartenLogger.hpp"
 #include <iostream>
 #include <fstream>
 #include <ctime>

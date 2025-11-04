@@ -40,6 +40,12 @@ $(TEMP_DIR)/imgui_widgets.o: include/imgui/imgui_widgets.cpp
 $(TEMP_DIR)/imgui_tables.o: include/imgui/imgui_tables.cpp
 	$(CPP_COMPILER) $(FLAGS) $^ -c -o $@
 
+$(TEMP_DIR)/ShaderProgram.o: src/MartenCore/src/ShaderProgram.cpp
+	$(CPP_COMPILER) $(FLAGS) $^ -c -o $@
+
+$(TEMP_DIR)/MartenGUI.o: src/MartenCore/src/MartenGUI.cpp
+	$(CPP_COMPILER) $(FLAGS) $^ -c -o $@
+
 $(TEMP_DIR)/Application.o: src/MartenCore/src/Application.cpp
 	$(CPP_COMPILER) $(FLAGS) $^ -c -o $@
 
@@ -49,10 +55,10 @@ $(TEMP_DIR)/Window.o: src/MartenCore/src/Window.cpp
 $(TEMP_DIR)/MartenLogger.o: src/MartenUtils/src/MartenLogger.cpp
 	$(CPP_COMPILER) $(FLAGS) $^ -c -o $@
 
-$(TEMP_DIR)/main.o: src/main.cpp
+$(TEMP_DIR)/MartenEngine.o: src/MartenEngine.cpp
 	$(CPP_COMPILER) $(FLAGS) $^ -c -o $@
 
-project: $(TEMP_DIR)/glad.o $(TEMP_DIR)/imgui_impl_glfw.o $(TEMP_DIR)/imgui_impl_opengl3.o $(TEMP_DIR)/imgui.o $(TEMP_DIR)/imgui_demo.o $(TEMP_DIR)/imgui_draw.o $(TEMP_DIR)/imgui_widgets.o $(TEMP_DIR)/imgui_tables.o $(TEMP_DIR)/Application.o $(TEMP_DIR)/Window.o $(TEMP_DIR)/MartenLogger.o $(TEMP_DIR)/main.o
+project: $(TEMP_DIR)/glad.o $(TEMP_DIR)/imgui_impl_glfw.o $(TEMP_DIR)/imgui_impl_opengl3.o $(TEMP_DIR)/imgui.o $(TEMP_DIR)/imgui_demo.o $(TEMP_DIR)/imgui_draw.o $(TEMP_DIR)/imgui_widgets.o $(TEMP_DIR)/imgui_tables.o $(TEMP_DIR)/ShaderProgram.o $(TEMP_DIR)/MartenGUI.o $(TEMP_DIR)/Application.o $(TEMP_DIR)/Window.o $(TEMP_DIR)/MartenLogger.o $(TEMP_DIR)/MartenEngine.o
 	$(CPP_COMPILER) $(FLAGS) $^ -o $(BUILD_DIR)/MartenEngine
 
 all: project

@@ -46,5 +46,13 @@ namespace MartenEngine {
             WindowData m_data;
             bool windowState = true;
             float m_background_color[4] = {0.1f, 0.1f, 0.1f, 0.0f};
+            
+            bool show_viewport_window = true;
+            bool show_outliner_window = true;
+            bool show_properties_window = true;
+            bool show_fileBrowser_window = false;
+            bool show_demo_window = false;
+            bool show_about_window = false;
+            
     };
 }
